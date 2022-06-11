@@ -78,11 +78,11 @@ function realizarPedido(text1,text2,prodUno,valorProdUno,prodDos,valorProdDos){
                 eleccion = pedirCantidad('Opcion incorrecta,' + text2 + " N°:" + i + " \n 1-" +prodUno + " $" + valorProdUno + " \n 2-" + prodDos + " $"+ valorProdDos );
             }
             if (eleccion == 1) {
-                subtotal = operacion(subtotal,valorProdUno,'1');
-                Pedido = operacion(pedido,prodUno + '$' + valorProdDos + " \n","1");
+                subtotal = operacion(subtotal + valorProdUno,"1");
+                Pedido = operacion(pedido + prodUno + '$' + valorProdDos + " \n" + "1");
             } else {
-                subtotal = operacion(subtotal,valorProdDos,'1');
-                Pedido = operacion(pedido,prodDos + '$' + valorProdDos + " \n","1");
+                subtotal = operacion(subtotal + valorProdDos + "1");
+                Pedido = operacion(pedido + prodDos + '$' + valorProdDos + " \n" + "1");
             }
         }
     }
@@ -90,10 +90,10 @@ function realizarPedido(text1,text2,prodUno,valorProdUno,prodDos,valorProdDos){
 }
 
 
-subtotalTorta = realizarPedido('Cuantas porciones van a llevar?','Elegi tu porcion',tortaUno,valorTortaUno,tortaDos,valorTortaDos,tortaTres,valorTortaTres,tortaCuatro,valorTortaCuatro);
+subtotalTorta = realizarPedido('Cuantas porciones van a llevar?' + 'Elegi tu porcion :' + "\n" + tortaUno + ' ' + valorTortaUno + " \n" + tortaDos + ' ' + valorTortaDos + " \n" + tortaTres + ' ' + valorTortaTres + " \n" + tortaCuatro + ' ' + valorTortaCuatro);
 
-Total = operacion(Total,subtotalTorta,'1')
+Total = operacion(Total + subtotalTorta + "1")
 
-subtotalBebida = realizarPedido('Que bebida quieres:','Elegi tu bebida',bebidaUno,precioBebida,bebidaDos,precioBebida);
+subtotalBebida = realizarPedido('Que bebida quieres:' + 'Elegi tu bebida :' + " \n" + bebidaUno + ' ' + precioBebida + " \n" + bebidaDos + ' ' + precioBebida);
 
-Total = operacion(Total,subtotalBebida,'1')
+Total = operacion(Total + subtotalBebida + "1")
